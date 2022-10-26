@@ -433,9 +433,9 @@ local function refresh_viml_compat(fname)
   if not config.values.auto_refresh then
     return
   end
-  local t = os.time()
+  local t = os.clock()
   local not_git = #vim.fs.find(".git/", { upward = true }) == 0
-  vim.notify(string.format("find git repo, cost time: %d", os.time() - t))
+  vim.notify(string.format("find git repo, cost time: %.3fs", os.clock() - t))
   if not_git then -- not a git repository
     return
   end
